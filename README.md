@@ -8,7 +8,7 @@ RestoPack is a tools that use for restaurant that made by myself
 - Tailwind CSS
 
 ## Features
-- Tracking available seat/table
+- Tracking seat/table availability
 - Tracking Menu availability 
 - Tracking order progress
 - Simple payment (Accept Cash Only)
