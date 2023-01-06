@@ -7,5 +7,12 @@ RestoPack is a tools that use for restaurant that made by myself
 - Material UI
 - Tailwind CSS
 
+## Features
+- Tracking available seat/table
+- Tracking Menu availability 
+- Tracking order progress
+- Simple payment (Accept Cash Only)
+- Generate payment invoice
+
 ## Coming Soon
 - Mobile App for Waitress create order
