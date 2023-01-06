@@ -1,0 +1,1 @@
+export { DataTable } from './MUI_tables/dataTable';

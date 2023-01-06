@@ -1,15 +1,18 @@
 import React from 'react';
-import { Helmet } from "react-helmet";
+import { Helmet, HelmetProvider } from 'react-helmet-async';
 import { SideBar, TopBar } from '../../../components';
 import "../../../assets/css/dashboard.css";
 
 export default function DashboardLayout({ children, title }) {
     return (
         <div className="flex bg-cream">
-            <Helmet>
-                <meta charSet="utf-8" />
-                <title>{title}</title>
-            </Helmet>
+            <HelmetProvider>
+                <Helmet>
+                    <meta charSet="utf-8" />
+                    <title>{title}</title>
+                </Helmet>
+            </HelmetProvider>
+
             <SideBar />
             <div className="flex flex-col flex-wrap w-full h-[100vh] overflow-auto">
                 <TopBar />
