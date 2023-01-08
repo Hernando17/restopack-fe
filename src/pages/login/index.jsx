@@ -6,6 +6,7 @@ import { Helmet, HelmetProvider } from 'react-helmet-async';
 import { useLoginMutation } from '../../redux/services/authApi';
 import { saveUser, userData } from '../../redux/features/userSlice';
 import { saveToken } from '../../redux/features/tokenSlice';
+import LoginCheck from '../../middlewares/preventLogin';
 
 export default function Login() {
     const emailRef = useRef();
@@ -33,6 +34,7 @@ export default function Login() {
     }
 
     return (
+
         <div className="flex bg-cream w-full h-[100vh] items-center justify-center">
             <HelmetProvider>
                 <Helmet>
@@ -55,5 +57,6 @@ export default function Login() {
                 </div >
             </Card >
         </div >
+
     )
 }

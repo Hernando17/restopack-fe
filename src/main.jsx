@@ -1,9 +1,9 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import {
-  RouterProvider,
+  BrowserRouter,
 } from "react-router-dom";
-import { router } from "./routers";
+import Router from "./routers";
 import "./assets/css/tailwind.css";
 import { store } from './app/store'
 import { Provider } from 'react-redux';
@@ -14,7 +14,9 @@ ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
-        <RouterProvider router={router} />
+        <BrowserRouter>
+          <Router />
+        </BrowserRouter>
       </PersistGate>
     </Provider>
   </React.StrictMode>

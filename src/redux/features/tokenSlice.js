@@ -22,4 +22,6 @@ export const tokenSlice = createSlice({
 
 export const { saveToken, clearToken } = tokenSlice.actions;
 
+export const tokenData = (state) => state.token.value;
+
 export default tokenSlice.reducer;

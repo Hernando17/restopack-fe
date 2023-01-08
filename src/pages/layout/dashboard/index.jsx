@@ -2,8 +2,18 @@ import React from 'react';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
 import { SideBar, TopBar } from '../../../components';
 import "../../../assets/css/dashboard.css";
+import { useDispatch } from 'react-redux';
+import { clearUser } from '../../../redux/features/userSlice';
+import { clearToken } from '../../../redux/features/tokenSlice';
 
 export default function DashboardLayout({ children, title }) {
+    const dispatch = useDispatch();
+
+    const logout = () => {
+        dispatch(clearUser());
+        dispatch(clearToken());
+    }
+
     return (
         <div className="flex bg-cream">
             <HelmetProvider>
@@ -13,7 +23,7 @@ export default function DashboardLayout({ children, title }) {
                 </Helmet>
             </HelmetProvider>
 
-            <SideBar />
+            <SideBar logout={logout} />
             <div className="flex flex-col flex-wrap w-full h-[100vh] overflow-auto">
                 <TopBar />
                 <div className="px-20 py-12">
