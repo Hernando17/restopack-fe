@@ -6,12 +6,12 @@ import { Navigate, Route } from "react-router-dom";
 
 export default function UserCheck({ children }) {
 
-    // const user = useSelector(userData);
-    // const token = useSelector(tokenData);
+    const user = useSelector(userData);
+    const token = useSelector(tokenData);
 
-    // if (!user && !token) {
-    //     return <Navigate to="/login" />
-    // }
+    if (!user.email && !token.token) {
+        return <Navigate to="/login" />
+    }
 
     return children;
 

@@ -9,7 +9,7 @@ export default function PreventLogin({ children }) {
     const user = useSelector(userData);
     const token = useSelector(tokenData);
 
-    if (user && token) {
+    if (user.email && token.token) {
         return <Navigate to="/" />
     }
 

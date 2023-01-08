@@ -9,7 +9,7 @@ import { clearToken } from '../../../redux/features/tokenSlice';
 export default function DashboardLayout({ children, title }) {
     const dispatch = useDispatch();
 
-    const logout = () => {
+    function logout() {
         dispatch(clearUser());
         dispatch(clearToken());
     }
@@ -23,9 +23,9 @@ export default function DashboardLayout({ children, title }) {
                 </Helmet>
             </HelmetProvider>
 
-            <SideBar logout={logout} />
+            <SideBar />
             <div className="flex flex-col flex-wrap w-full h-[100vh] overflow-auto">
-                <TopBar />
+                <TopBar logout={logout} />
                 <div className="px-20 py-12">
                     <h1 className="font-bold text-[24px] mb-4">{title}</h1>
                     {children}

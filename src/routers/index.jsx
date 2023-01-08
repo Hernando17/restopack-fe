@@ -11,8 +11,16 @@ export default function Router() {
           <Dashboard />
         </UserCheck>
       } />
-      <Route path="/order" element={<Order />} />
-      <Route path="/table" element={<Table />} />
+      <Route path="/order" element={
+        <UserCheck>
+          <Order />
+        </UserCheck>
+      } />
+      <Route path="/table" element={
+        <UserCheck>
+          <Table />
+        </UserCheck>
+      } />
       <Route path="/login" element={
         <PreventLogin>
           <Login />
