@@ -26,6 +26,7 @@ const rootReducer = combineReducers({
   user: persistReducer(userPersistConfig, userReducer),
   token: persistReducer(tokenPersistConfig, tokenReducer),
 
+  [authApi.reducerPath]: authApi.reducer,
   [tableApi.reducerPath]: tableApi.reducer,
 });
 

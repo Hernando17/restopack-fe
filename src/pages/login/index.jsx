@@ -6,14 +6,13 @@ import { Helmet, HelmetProvider } from 'react-helmet-async';
 import { useLoginMutation } from '../../redux/services/authApi';
 import { saveUser, userData } from '../../redux/features/userSlice';
 import { saveToken } from '../../redux/features/tokenSlice';
-import LoginCheck from '../../middlewares/preventLogin';
 
 export default function Login() {
     const emailRef = useRef();
     const passwordRef = useRef();
     const dispatch = useDispatch();
 
-    const [login, result] = useLoginMutation();
+    const [login, { isSuccess, isError, error }] = useLoginMutation();
 
     const loginAction = async (e) => {
         e.preventDefault();
@@ -21,17 +20,20 @@ export default function Login() {
             await login({
                 email: emailRef.current.value,
                 password: passwordRef.current.value
-            }).then((res) => {
-                dispatch(saveUser(res.data.user))
-                dispatch(saveToken({
-                    token: res.data.token,
-                    refreshToken: res.data.refreshToken
-                }))
-            })
-        } catch (error) {
-            console.log(error)
+            }).unwrap()
+                .then((res) => {
+                    dispatch(saveUser(res.user))
+                    dispatch(saveToken({
+                        token: res.token,
+                        refreshToken: res.refreshToken
+                    }))
+                })
+        } catch (err) {
+            console.log(err)
         }
     }
+
+
 
     return (
 
