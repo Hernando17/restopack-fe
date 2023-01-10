@@ -4,7 +4,7 @@ import { DashboardLayout } from '../layout';
 
 export default function Order() {
     return (
-        <DashboardLayout title="Order">
+        <DashboardLayout title="RestoPack | Order">
             <DataTable />
         </DashboardLayout>
     )

@@ -1,7 +1,6 @@
 import { createBrowserRouter, Routes, Route } from "react-router-dom";
-import { Dashboard, Order, Table, Login } from "../pages";
-import PreventLogin from "../middlewares/preventLogin";
-import UserCheck from "../middlewares/userCheck";
+import { Dashboard, Order, Table, Login, Register } from "../pages";
+import { PreventLogin, UserCheck } from "../middlewares";
 
 export default function Router() {
   return (
@@ -24,6 +23,11 @@ export default function Router() {
       <Route path="/login" element={
         <PreventLogin>
           <Login />
+        </PreventLogin>
+      } />
+      <Route path="/register" element={
+        <PreventLogin>
+          <Register />
         </PreventLogin>
       } />
     </Routes>

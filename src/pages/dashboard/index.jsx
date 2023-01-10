@@ -4,7 +4,7 @@ import { DashboardLayout } from '../layout';
 
 export default function Dashboard() {
     return (
-        <DashboardLayout title="Dashboard">
+        <DashboardLayout title="RestoPack | Dashboard">
             <div className="flex gap-4">
                 <Card>
                     <div className="px-5 py-3 min-w-[200px]">

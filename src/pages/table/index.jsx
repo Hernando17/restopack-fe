@@ -21,7 +21,7 @@ export default function Table() {
     }
 
     return (
-        <DashboardLayout title="Table" >
+        <DashboardLayout title="RestoPack | Table" >
             <DataTable columns={columns} loading={true} />
         </DashboardLayout>
     )
