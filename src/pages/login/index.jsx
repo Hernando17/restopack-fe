@@ -1,14 +1,15 @@
-import { useRef, useEffect } from 'react';
+import { useRef, useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Card } from '../../components';
-import { Button, Input, Alert } from '@mui/material';
+import { Button, Input, Alert, Snackbar } from '@mui/material';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
 import { useLoginMutation } from '../../redux/services/authApi';
 import { saveUser, userData } from '../../redux/features/userSlice';
 import { saveToken } from '../../redux/features/tokenSlice';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 export default function Login() {
+    const location = useLocation();
     const emailRef = useRef();
     const passwordRef = useRef();
     const dispatch = useDispatch();
@@ -34,14 +35,34 @@ export default function Login() {
         }
     }
 
+    const [open, setOpen] = useState(false);
 
-    // useEffect(() => {
-    //     const interval = setInterval(() => {
-    //         console.log(error.data)
-    //     }, 1000)
-    //     return () => clearInterval(interval)
-    // })
+    const handleOpen = () => {
+        setOpen(true);
+    };
 
+    const handleClose = (event, reason) => {
+        if (reason === 'clickaway') {
+            return;
+        }
+
+        setOpen(false);
+    };
+
+    useEffect(() => {
+        if (location.state) {
+            handleOpen()
+        }
+    }, [])
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            if (location.state) {
+                console.log(location.state.message)
+            }
+        }, 1000)
+        return () => clearInterval(interval)
+    })
 
     return (
 
@@ -52,6 +73,16 @@ export default function Login() {
                     <title>RestoPack | Login</title>
                 </Helmet>
             </HelmetProvider>
+
+            <Snackbar open={open} autoHideDuration={6000} onClose={handleClose} anchorOrigin={{
+                vertical: "top",
+                horizontal: "right"
+            }}>
+                <Alert onClose={handleClose} severity="success" sx={{ width: '100%' }}>
+                    {location.state ? location.state.message : ''}
+                </Alert>
+            </Snackbar>
+
             <Card>
                 <div className="flex flex-row items-center justify-center">
                     <div className="w-[400px] px-12 py-16">
