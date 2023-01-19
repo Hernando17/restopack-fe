@@ -5,6 +5,16 @@ export const authApi = createApi({
   reducerPath: "auth",
   baseQuery: fetchBaseQuery({
     baseUrl: BaseURL,
+    prepareHeaders: (headers, { getState }) => {
+      const token = getState().token.value.token;
+
+      // If we have a token set in state, let's assume that we should be passing it.
+      if (token) {
+        headers.set("authorization", `Bearer ${token}`);
+      }
+
+      return headers;
+    },
   }),
   endpoints: (build) => ({
     login: build.mutation({
@@ -23,7 +33,13 @@ export const authApi = createApi({
       }),
       transformResponse: (response) => response,
     }),
+    getUserById: build.query({
+      query: ({ id }) => ({
+        url: `/user/${id}`,
+      }),
+    }),
   }),
 });
 
-export const { useLoginMutation, useRegisterMutation } = authApi;
+export const { useLoginMutation, useRegisterMutation, useGetUserByIdQuery } =
+  authApi;

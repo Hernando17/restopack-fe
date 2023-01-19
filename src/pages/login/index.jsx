@@ -24,7 +24,7 @@ export default function Login() {
                 password: passwordRef.current.value
             }).unwrap()
                 .then((res) => {
-                    dispatch(saveUser(res.user))
+                    dispatch(saveUser({ id: res.user.id }))
                     dispatch(saveToken({
                         token: res.token,
                         refreshToken: res.refreshToken

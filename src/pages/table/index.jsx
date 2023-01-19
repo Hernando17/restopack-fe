@@ -8,6 +8,7 @@ export default function Table() {
     const columns = [
         { field: 'id', headerName: '#', flex: 1 },
         { field: 'number', headerName: 'Number', flex: 1 },
+        { field: 'isOrdered', headerName: 'isOrdered', flex: 1 },
         {
             field: 'action',
             headerName: 'Action',

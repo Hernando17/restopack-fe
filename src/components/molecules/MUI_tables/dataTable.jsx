@@ -11,6 +11,7 @@ export function DataTable({ columns, loading, data }) {
                     {
                         id: index,
                         number: item.number,
+                        isOrdered: item.isOrdered,
                     }
                 )) : []}
                 columns={columns}

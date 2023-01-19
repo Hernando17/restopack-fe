@@ -1,18 +1,28 @@
-import React from 'react';
+import { useEffect } from 'react';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
 import { SideBar, TopBar } from '../../../components';
 import "../../../assets/css/dashboard.css";
-import { useDispatch } from 'react-redux';
-import { clearUser } from '../../../redux/features/userSlice';
+import { useDispatch, useSelector } from 'react-redux';
+import { clearUser, userData } from '../../../redux/features/userSlice';
 import { clearToken } from '../../../redux/features/tokenSlice';
+import { useGetUserByIdQuery } from '../../../redux/services/authApi';
 
 export default function DashboardLayout({ children, title }) {
     const dispatch = useDispatch();
+    const userId = useSelector(userData);
+    const { data: user, isLoading } = useGetUserByIdQuery({
+        id: userId.id
+    });
 
     function logout() {
         dispatch(clearUser());
         dispatch(clearToken());
     }
+
+    if (isLoading) {
+        return <div>Loading...</div>
+    }
+
 
     return (
         <div className="flex bg-cream">
@@ -25,7 +35,7 @@ export default function DashboardLayout({ children, title }) {
 
             <SideBar />
             <div className="flex flex-col flex-wrap w-full h-[100vh] overflow-auto">
-                <TopBar logout={logout} />
+                <TopBar logout={logout} username={user.username} />
                 <div className="px-20 py-12">
                     <h1 className="font-bold text-[24px] mb-4">{title}</h1>
                     {children}
