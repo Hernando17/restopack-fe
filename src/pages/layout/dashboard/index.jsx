@@ -34,9 +34,9 @@ export default function DashboardLayout({ children, title }) {
             </HelmetProvider>
 
             <SideBar />
-            <div className="flex flex-col flex-wrap w-full h-[100vh] overflow-auto">
+            <div className="flex flex-wrap w-full overflow-auto">
                 <TopBar logout={logout} username={user.username} />
-                <div className="px-20 py-12">
+                <div className="px-10 py-12 w-full bg-[#efef]">
                     <h1 className="font-bold text-[24px] mb-4">{title}</h1>
                     {children}
                 </div>
