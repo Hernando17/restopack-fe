@@ -6,6 +6,7 @@ module.exports = {
       transparent: "transparent",
       white: "#ffff",
       cream: "#fce9c2",
+      primary: "#f76060",
     },
     extend: {},
   },

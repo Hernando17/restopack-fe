@@ -32,11 +32,10 @@ export default function DashboardLayout({ children, title }) {
                     <title>{title}</title>
                 </Helmet>
             </HelmetProvider>
-
             <SideBar />
-            <div className="flex flex-wrap w-full overflow-auto">
+            <div className="flex flex-col w-full">
                 <TopBar logout={logout} username={user.username} />
-                <div className="px-10 py-12 w-full bg-[#efef]">
+                <div className="px-10 py-12 w-full h-[100vh] bg-[#efef] overflow-auto">
                     <h1 className="font-bold text-[24px] mb-4">{title}</h1>
                     {children}
                 </div>
