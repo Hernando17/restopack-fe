@@ -1,10 +1,20 @@
 import React, { useEffect } from 'react';
-import { DataTable } from '../../components';
+import { BasicModal, DataTable } from '../../components';
 import { DashboardLayout } from '../layout';
 import { useGetAllTableQuery } from '../../redux/services/tableApi';
 import { BasicButton } from '../../components/atoms/button/basicButton';
 
 export default function Table() {
+    const [modalOpen, setModalOpen] = React.useState(false);
+    const [open, setOpen] = React.useState(false);
+
+    const closeModal = () => {
+        setModalOpen(false);
+    }
+
+    const openModal = () => {
+        setModalOpen(true);
+    }
 
     const columns = [
         { field: 'id', headerName: '#', flex: 1 },
@@ -35,8 +45,11 @@ export default function Table() {
 
     return (
         <DashboardLayout title="RestoPack | Table" >
+            <BasicModal open={modalOpen} closeModal={closeModal}>
+                <p>Are you sure?</p>
+            </BasicModal>
             <div className="flex flex-wrap justify-end w-full mb-2">
-                <BasicButton text="+" bg="primary" />
+                <BasicButton text="+" bg="primary" onClick={openModal} />
             </div>
             <DataTable data={data} columns={columns} loading={isLoading} />
         </DashboardLayout>

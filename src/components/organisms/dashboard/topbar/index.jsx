@@ -59,7 +59,8 @@ export function TopBar({ logout, username }) {
             <div className="w-full mx-10">
                 {/* <button onClick={logout}>logout</button> */}
                 <BasicModal open={modalOpen} closeModal={closeModal}>
-                    <p>test</p>
+                    <p>Are you sure?</p>
+                    <Button onClick={logout}>Logout</Button>
                 </BasicModal>
                 <Stack direction="row" spacing={2}>
                     <div className="w-full text-right">
