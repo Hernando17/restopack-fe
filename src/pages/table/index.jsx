@@ -3,6 +3,8 @@ import { BasicModal, DataTable } from '../../components';
 import { DashboardLayout } from '../layout';
 import { useGetAllTableQuery } from '../../redux/services/tableApi';
 import { BasicButton } from '../../components/atoms/button/basicButton';
+import { Button, Input, Alert, Snackbar } from '@mui/material';
+
 
 export default function Table() {
     const [modalOpen, setModalOpen] = React.useState(false);
@@ -46,7 +48,8 @@ export default function Table() {
     return (
         <DashboardLayout title="RestoPack | Table" >
             <BasicModal open={modalOpen} closeModal={closeModal}>
-                <p>Are you sure?</p>
+                <label htmlFor="number">Number</label>
+                <Input type="number" name="number" placeholder="Number" fullWidth />
             </BasicModal>
             <div className="flex flex-wrap justify-end w-full mb-2">
                 <BasicButton text="+" bg="primary" onClick={openModal} />

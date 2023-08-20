@@ -10,7 +10,7 @@ import Stack from '@mui/material/Stack';
 import { BasicModal } from '../../../molecules';
 
 
-export function TopBar({ logout, username }) {
+export function TopBar({ logout, name }) {
     const [modalOpen, setModalOpen] = React.useState(false);
     const [open, setOpen] = React.useState(false);
     const anchorRef = React.useRef(null);
@@ -55,7 +55,7 @@ export function TopBar({ logout, username }) {
     }, [open]);
 
     return (
-        <div className="flex w-full h-16 bg-white border-b-2 border-l-2 items-center">
+        <div className="flex w-full h-16 bg-white items-center">
             <div className="w-full mx-10">
                 {/* <button onClick={logout}>logout</button> */}
                 <BasicModal open={modalOpen} closeModal={closeModal}>
@@ -72,7 +72,7 @@ export function TopBar({ logout, username }) {
                             aria-haspopup="true"
                             onClick={handleToggle}
                         >
-                            {username}
+                            {name}
                         </Button>
                         <Popper
                             open={open}

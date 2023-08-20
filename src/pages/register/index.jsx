@@ -1,12 +1,9 @@
 import { useState, useRef, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { Card, BasicTabs } from '../../components';
-import { Button, Input, Alert, Box, Tabs, Tab, Typography } from '@mui/material';
-import PropTypes from 'prop-types';
+import { Card, BasicTabs, InputBasic } from '../../components';
+import { Button, Alert } from '@mui/material';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
-import { useRegisterMutation } from '../../redux/services/authApi';
-import { saveUser, userData } from '../../redux/features/userSlice';
-import { saveToken } from '../../redux/features/tokenSlice';
+import { useRegisterMutation } from '../../redux/services/authApi'
 import { Link, useNavigate } from 'react-router-dom';
 
 export default function Register() {
@@ -57,7 +54,7 @@ export default function Register() {
     // })
 
     return (
-        <div className="flex bg-cream w-full h-[100vh] items-center justify-center overflow-y-auto">
+        <div className="flex bg-darkBlue w-full h-screen items-center justify-center overflow-y-auto">
             <HelmetProvider>
                 <Helmet>
                     <meta charSet="utf-8" />
@@ -82,13 +79,13 @@ export default function Register() {
                                     }
                                     <form onSubmit={registerAction}>
                                         <label htmlFor="username">Username</label>
-                                        <Input type="text" style={{ marginBottom: 14 }} placeholder="Input your username" name="username" inputRef={usernameRef} fullWidth />
+                                        <InputBasic type="text" style={{ marginBottom: 14 }} placeholder="Input your username" name="username" ref={usernameRef} fullWidth />
                                         <label htmlFor="email">Email</label>
-                                        <Input type="email" style={{ marginBottom: 14 }} placeholder="Input your email" name="email" inputRef={emailRef} fullWidth />
+                                        <InputBasic type="email" style={{ marginBottom: 14 }} placeholder="Input your email" name="email" ref={emailRef} fullWidth />
                                         <label htmlFor="password" >Password</label>
-                                        <Input type="password" style={{ marginBottom: 14 }} placeholder="Input your password" name="password" inputRef={passwordRef} fullWidth />
+                                        <InputBasic type="password" style={{ marginBottom: 14 }} placeholder="Input your password" name="password" ref={passwordRef} fullWidth />
                                         <label htmlFor="confirm_password" >Confirm Password</label>
-                                        <Input type="password" style={{ marginBottom: 14 }} placeholder="Reinput your password" name="confirm_password" inputRef={confirmPasswordRef} fullWidth />
+                                        <InputBasic type="password" style={{ marginBottom: 14 }} placeholder="Reinput your password" name="confirm_password" ref={confirmPasswordRef} fullWidth />
                                         <Button type="submit" variant='contained' style={{ width: "100%" }}>Register</Button>
                                         <p className="text-center mt-8">Have account already? <br></br><span><Link style={{ color: "blue" }} to='/login'>Login</Link></span></p>
                                     </form>
@@ -104,13 +101,13 @@ export default function Register() {
                                     }
                                     <form onSubmit={registerAction}>
                                         <label htmlFor="username">Username</label>
-                                        <Input type="text" style={{ marginBottom: 14 }} placeholder="Input your username" name="username" inputRef={usernameRef} fullWidth />
+                                        <InputBasic type="text" style={{ marginBottom: 14 }} placeholder="Input your username" name="username" ref={usernameRef} fullWidth />
                                         <label htmlFor="email">Email</label>
-                                        <Input type="email" style={{ marginBottom: 14 }} placeholder="Input your email" name="email" inputRef={emailRef} fullWidth />
+                                        <InputBasic type="email" style={{ marginBottom: 14 }} placeholder="Input your email" name="email" ref={emailRef} fullWidth />
                                         <label htmlFor="password" >Password</label>
-                                        <Input type="password" style={{ marginBottom: 14 }} placeholder="Input your password" name="password" inputRef={passwordRef} fullWidth />
+                                        <InputBasic type="password" style={{ marginBottom: 14 }} placeholder="Input your password" name="password" ref={passwordRef} fullWidth />
                                         <label htmlFor="confirm_password" >Confirm Password</label>
-                                        <Input type="password" style={{ marginBottom: 14 }} placeholder="Reinput your password" name="confirm_password" inputRef={confirmPasswordRef} fullWidth />
+                                        <InputBasic type="password" style={{ marginBottom: 14 }} placeholder="Reinput your password" name="confirm_password" ref={confirmPasswordRef} fullWidth />
                                         <Button type="submit" variant='contained' style={{ width: "100%" }}>Register</Button>
                                         <p className="text-center mt-8">Have account already? <br></br><span><Link style={{ color: "blue" }} to='/login'>Login</Link></span></p>
                                     </form>

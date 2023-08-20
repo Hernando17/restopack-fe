@@ -1,6 +1,6 @@
 import { useRef, useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { Card } from '../../components';
+import { Card, InputBasic } from '../../components';
 import { Button, Input, Alert, Snackbar } from '@mui/material';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
 import { useLoginMutation } from '../../redux/services/authApi';
@@ -57,16 +57,16 @@ export default function Login() {
 
     useEffect(() => {
         const interval = setInterval(() => {
-            if (location.state) {
-                console.log(location.state.message)
-            }
+
+            console.log(emailRef.current.value, passwordRef.current.value)
+
         }, 1000)
         return () => clearInterval(interval)
     })
 
     return (
 
-        <div className="flex bg-cream w-full h-[100vh] items-center justify-center">
+        <div className="flex bg-darkBlue w-full h-[100vh] items-center justify-center">
             <HelmetProvider>
                 <Helmet>
                     <meta charSet="utf-8" />
@@ -96,9 +96,9 @@ export default function Login() {
                         }
                         <form onSubmit={loginAction}>
                             <label htmlFor="email">Email</label>
-                            <Input type="email" style={{ marginBottom: 14 }} placeholder="Input your email" name="email" inputRef={emailRef} fullWidth />
+                            <InputBasic type="email" style={{ marginBottom: 14 }} placeholder="Input your email" name="email" ref={emailRef} fullWidth />
                             <label htmlFor="password" >Password</label>
-                            <Input type="password" style={{ marginBottom: 14 }} placeholder="Input your password" name="password" inputRef={passwordRef} fullWidth />
+                            <InputBasic type="password" style={{ marginBottom: 14 }} placeholder="Input your password" name="password" ref={passwordRef} fullWidth />
                             <Button type="submit" variant='contained' style={{ width: "100%" }}>Login</Button>
                             <p className="text-center mt-8">Don't have account yet? <br></br><span><Link style={{ color: "blue" }} to='/register'>Register</Link></span></p>
                         </form>
