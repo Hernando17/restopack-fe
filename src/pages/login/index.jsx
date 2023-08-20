@@ -1,6 +1,6 @@
 import { useRef, useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { Card, InputBasic } from '../../components';
+import { ButtonPrimary, Card, InputBasic } from '../../components';
 import { Button, Input, Alert, Snackbar } from '@mui/material';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
 import { useLoginMutation } from '../../redux/services/authApi';
@@ -66,7 +66,7 @@ export default function Login() {
 
     return (
 
-        <div className="flex bg-darkBlue w-full h-[100vh] items-center justify-center">
+        <div className="flex bg-darkBlue w-full h-screen items-center justify-center">
             <HelmetProvider>
                 <Helmet>
                     <meta charSet="utf-8" />
@@ -99,7 +99,9 @@ export default function Login() {
                             <InputBasic type="email" style={{ marginBottom: 14 }} placeholder="Input your email" name="email" ref={emailRef} fullWidth />
                             <label htmlFor="password" >Password</label>
                             <InputBasic type="password" style={{ marginBottom: 14 }} placeholder="Input your password" name="password" ref={passwordRef} fullWidth />
-                            <Button type="submit" variant='contained' style={{ width: "100%" }}>Login</Button>
+                            <ButtonPrimary bg="primary" fullWidth>
+                                Login
+                            </ButtonPrimary>
                             <p className="text-center mt-8">Don't have account yet? <br></br><span><Link style={{ color: "blue" }} to='/register'>Register</Link></span></p>
                         </form>
                     </div>

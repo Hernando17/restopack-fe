@@ -2,8 +2,8 @@ import React, { useEffect } from 'react';
 import { BasicModal, DataTable } from '../../components';
 import { DashboardLayout } from '../layout';
 import { useGetAllTableQuery } from '../../redux/services/tableApi';
-import { BasicButton } from '../../components/atoms/button/basicButton';
-import { Button, Input, Alert, Snackbar } from '@mui/material';
+import { ButtonPrimary } from '../../components';
+import { Input } from '@mui/material';
 
 
 export default function Table() {
@@ -52,7 +52,9 @@ export default function Table() {
                 <Input type="number" name="number" placeholder="Number" fullWidth />
             </BasicModal>
             <div className="flex flex-wrap justify-end w-full mb-2">
-                <BasicButton text="+" bg="primary" onClick={openModal} />
+                <ButtonPrimary onClick={openModal}>
+                    +
+                </ButtonPrimary>
             </div>
             <DataTable data={data} columns={columns} loading={isLoading} />
         </DashboardLayout>
